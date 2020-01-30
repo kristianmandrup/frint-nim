@@ -33,6 +33,10 @@ var
 
 {.push importcpp.}
 
+
+# TODO: use from Nim rxjs bindings module
+proc subscribe*(observable: Observable, proc(): auto)
+
 proc useFactory*(options: ProviderOptions, proc(): auto)
 
 proc initialize*(options: AppOptions, proc(): auto)
