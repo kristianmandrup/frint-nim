@@ -1,5 +1,7 @@
 # frint-router bindings
 
+Frint router bindings for Nim
+
 ## API
 
 ```nim

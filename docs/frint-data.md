@@ -1,6 +1,6 @@
-# frint-router bindings
+# frint-data bindings
 
-FrintJS router bindings for Nim
+FrintJS data bindings for Nim
 
 ## API
 

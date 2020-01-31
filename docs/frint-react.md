@@ -1,4 +1,4 @@
-# frint-router bindings
+# frint-react bindings
 
 ## API
 

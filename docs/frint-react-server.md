@@ -1,4 +1,4 @@
-# Frint react server bindings
+# frint-react-server bindings
 
 ## API
 
