@@ -32,8 +32,6 @@ var
   Frint*{.importc, nodecl.}: FrintGlobal
 
 {.push importcpp.}
-
-
 # TODO: use from Nim rxjs bindings module
 proc subscribe*(observable: Observable, proc(): auto)
 

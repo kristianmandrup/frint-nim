@@ -1,39 +1,24 @@
-import macros, dom, jsffi
-# TODO: import rxjs module to use RxJS bindings and types
+# frint-router bindings
 
-{.experimental: "callOperator".}
+FrintJS router bindings for Nim
 
-when not defined(js):
-  {.error: "frint-data.nim is only available for the JS target".}
+## API
 
-type
-  ITypes* = JsObject
-    `UUID`*,
-    `model`*,
-    `collection`*,
-    `bool`*,
-    `string`*,
-    `number`* ,
-    `enum`*,
-    `date`*
-  Model = JsObject
-  Collection = JsObject
-    length*: cint
-  ModelOptions = JsObject
-    schema*: JsObject
-  CollectionOptions = JsObject
-    model*: Model    
+```nim
+var
+  Types*: ITypes
+  TypesError*: JsObject
+  MethodError*: JsObject
+  CollectionError*: JsObject
 
-var 
-  Types*: ITypes {.importjs, nodecl.}
-  TypesError*: JsObject {.importjs, nodecl.}
-  MethodError*: JsObject {.importjs, nodecl.}
-  CollectionError*: JsObject {.importjs, nodecl.}
-
-{.push importcpp.}
 # Model
+# factory
 proc createModel*(modelOptions: ModelOptions): Model
+
+# Collection factory options method to run code to initialize new model
 proc initialize*(options: ModelOptions, fn: proc())
+
+# static global utility function
 proc isModel(obj: JsObject): bool
 
 # Model instance methods
@@ -43,8 +28,13 @@ proc toJS*(model: Model, path: cstring): auto
 proc destroy*(model: Model)
 
 # Collection
+# factory
 proc createCollection*(collectionOptions: CollectionOptions): Collection
+
+# Collection factory options method to run code to initialize new collection
 proc initialize*(options: CollectionOptions, fn: proc())
+
+# static global utility function
 proc isCollection(obj: JsObject): bool
 
 # Collection instance methods
@@ -71,11 +61,12 @@ proc destroy*(collection: Collection)
 
 proc toJS*(collection: Collection): JsObject
 proc get*(collection: Collection): auto
-{.pop.}
+
+# observe
 
 # Model
-proc getObs*(model: Model, path: cstring): Observable {.importjs "get$" .}
-proc toJSObs*(model: Model, path: cstring): Observable {.importjs "toJs$" .}
+proc getObs*(model: Model, path: cstring): Observable
+proc toJSObs*(model: Model, path: cstring): Observable
 
 # Collection
 proc atObs*(collection: Collection, index: cint): Observable[Collection] {.importjs "at$" .}

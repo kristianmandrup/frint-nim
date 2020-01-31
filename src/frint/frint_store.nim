@@ -21,16 +21,21 @@ var
   FrintStore*{.importc, nodecl.}: FrintStoreGlobal
 
 {.push importcpp.}
-proc createStore*(frintStoreGlobal: FrintStore, storeConfig: StoreConfig): Store
-proc combineReducers*(frintStoreGlobal: FrintStore, reducers: JsObject): auto
-proc combineEpics*(frintStoreGlobal: FrintStore)
-proc dispatch*(store: Store, action: auto) 
+# static methods on FrintStore global object
+proc createStore*(frintStoreGlobal: FrintStoreGlobal, storeConfig: StoreConfig): Store
+proc combineReducers*(frintStoreGlobal: FrintStoreGlobal, reducers: JsObject): auto
+proc combineEpics*(frintStoreGlobal: FrintStoreGlobal)
 
+# store instance methods
+proc dispatch*(store: Store, action: auto) 
+proc getState*(store: Store): auto
+
+# store connfig options methods
 proc reducer*(storeConfig: StoreConfig, proc()): auto
 proc epic*(storeConfig: StoreConfig, proc(actions: Observable): Observable) 
-proc getState*(store: Store): auto
 {.pop.}
 
+# store instance methods
 proc getStateObs*(store: Store): Observable {.importjs "getState$".}
 
 
