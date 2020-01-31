@@ -17,6 +17,11 @@ var
 
 {.push importcpp.}
 proc render*(app: App, node: Element)
-proc observe*(fn: proc(app: App, propsObs: Observable): Observable |
+proc observe*(onChange: proc(app: App, propsObs: Observable): Observable |
     JsObject): auto
 {.pop.}
+
+proc observeComponent*(component: Component, onChange: proc(app: App, propsObs: Observable): Observable |
+JsObject): auto =
+  {.emit: ["observe", "(", onChange, ")(", component, ")"] .}
+
