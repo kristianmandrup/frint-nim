@@ -1,10 +1,8 @@
-import macros, dom, jsffi
+# frint-router-react bindings
 
-{.experimental: "callOperator".}
+## API
 
-when not defined(js):
-  {.error: "frint-router-react.nim is only available for the JS target".}
-
+```nim
 type 
   IReactRoute = JsObject
     path*: cstring) # The pattern to match against
@@ -22,7 +20,7 @@ type
     children*: Node # Children of <Route>s
 
 var
-  Link*: ILink {.importjs, nodecl.}
-  Route: IReactRoute {.importjs, nodecl.}
-  Switch*: ISwitch {.importjs, nodecl.}
-
+  Link*: ILink
+  Route: IReactRoute
+  Switch*: ISwitch
+```

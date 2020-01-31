@@ -12,9 +12,9 @@ FrintJS has built-in support for:
 
 Frint binding modules for:
 
-- `frint-data` Reactive data modelling ([frint-data docs](frint-data.md))
-- `frint-store` State management with reactive stores ([frint-store docs](frint-store.md))
-- `frint-router` Router services for SPAs ([frint-router docs](frint-router.md))
+- [frint-data](src/frint/frint_data.nim) Reactive data modelling
+- [frint-store](src/frint/frint_store.nim) State management with reactive stores
+- [frint-router](src/frint/frint_router.nim) Router services for SPAs
 
 ```nim
 var
@@ -51,11 +51,11 @@ proc getApps*(app: App, name: cstring, region: cstring, regionKey: cstring): Obs
 proc getAppOnceAvailable*(app: App, name: cstring, region: cstring, regionKey: cstring): Observable
 ```
 
-## React (TODO)
+## React
 
-- `frint-react` React.js integration
-- `frint-react-server` Rerver-side rendering of Apps
-- `frint-router-react` React components for building SPAs
+- [frint-react](docs/frint-react.md) React.js integration
+- [frint-router-react](docs/frint-router-react.md) React components for building SPAs
+- [frint-react-server](docs/frint-react-server.md) Rerver-side rendering of Apps
 
 ## TODO
 
